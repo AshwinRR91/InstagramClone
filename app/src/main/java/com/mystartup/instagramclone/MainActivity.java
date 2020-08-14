@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button fetchButton;
     private String str;
     private TextView getText;
+    private Button clearText;
 
 
     @Override
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.save_details);
         fetchButton = findViewById(R.id.fetch_details);
         getText = findViewById(R.id.get_text);
+        clearText = findViewById(R.id.clear_text);
+        clearText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getText.setText("");
+            }
+        });
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -10,11 +10,12 @@
         android:id="@+id/fetch_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="12dp"
         android:background="#050505"
         android:text="FETCH"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save_details" />
 
@@ -61,11 +62,12 @@
         android:id="@+id/save_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="28dp"
         android:background="#050505"
         android:text="SAVE"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/singer" />
 
@@ -73,7 +75,21 @@
         android:id="@+id/get_text"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clear_text" />
+
+    <Button
+        android:id="@+id/clear_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="CLEAR"
+        android:background="#050505"
+        android:textColor="#FFFFFF"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
