@@ -7,82 +7,63 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText namePerson;
-    private EditText nameRocket;
-    private EditText nameSinger;
-    private Button saveButton;
-    private Button fetchButton;
-    private String str;
-    private Button switchToSignUP;
-
+private EditText userName;
+private EditText loginEmail;
+private EditText password;
+private Button loginButton;
+private Button signUpButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        namePerson = findViewById(R.id.editTextTextPersonName);
-        nameRocket = findViewById(R.id.rocket);
-        nameSinger = findViewById(R.id.singer);
-        fetchButton = findViewById(R.id.fetch_details);
-        saveButton = findViewById(R.id.save_details);
-        fetchButton = findViewById(R.id.fetch_details);
-        switchToSignUP = findViewById(R.id.switch_to_signup);
-        switchToSignUP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent signUp = new Intent(MainActivity.this,SignUpActivity.class);
-                startActivity(signUp);
+        setTitle("INSTACLONE");
+        userName = findViewById(R.id.user_name);
+        loginEmail = findViewById(R.id.email_id);
+        password = findViewById(R.id.password);
+        loginButton = findViewById(R.id.login_button);
+        signUpButton = findViewById(R.id.signup_buton);
+        loginButton.setOnClickListener(this);
+        signUpButton.setOnClickListener(this);
 
-            }
-        });
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-                ParseObject Likes = new ParseObject("Likes");
-                Likes.put("PersonName",namePerson.getText().toString());
-                Likes.put("RocketName",nameRocket.getText().toString());
+    @Override
+    public void onClick(View view) {
 
-                Likes.put("SingerName",nameSinger.getText().toString());
-                Likes.saveInBackground(new SaveCallback() {
+        switch (view.getId()){
+
+            case R.id.signup_buton:
+                final ParseUser parseUser = new ParseUser();
+                parseUser.setUsername(userName.getText().toString());
+                parseUser.setEmail(loginEmail.getText().toString());
+                parseUser.setPassword(password.getText().toString());
+                parseUser.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
                         if(e != null){
-                        Toast.makeText(MainActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
-                    }}
-                }); }
-        });
-
-        fetchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                str = "";
-                ParseQuery<ParseObject> getDetails = ParseQuery.getQuery("Likes");
-                getDetails.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> objects, ParseException e) {
-                        if (e == null) {
-                            for (ParseObject pq : objects) {
-                                str += pq.get("PersonName") + "" + pq.get("SingerName") + "" + pq.get("RocketName");
-                            }
-                        } else {
                             Toast.makeText(MainActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
                         }
-                    }});
-            }
-        });
+                    }
+                });
+                break;
+
+        }
     }
 }
