@@ -2,11 +2,11 @@ package com.mystartup.instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -25,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button saveButton;
     private Button fetchButton;
     private String str;
-    private TextView getText;
-    private Button clearText;
+    private Button switchToSignUP;
 
 
     @Override
@@ -40,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
         fetchButton = findViewById(R.id.fetch_details);
         saveButton = findViewById(R.id.save_details);
         fetchButton = findViewById(R.id.fetch_details);
-        getText = findViewById(R.id.get_text);
-        clearText = findViewById(R.id.clear_text);
-        clearText.setOnClickListener(new View.OnClickListener() {
+        switchToSignUP = findViewById(R.id.switch_to_signup);
+        switchToSignUP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getText.setText("");
+                Intent signUp = new Intent(MainActivity.this,SignUpActivity.class);
+                startActivity(signUp);
+
             }
         });
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
                             for (ParseObject pq : objects) {
                                 str += pq.get("PersonName") + "" + pq.get("SingerName") + "" + pq.get("RocketName");
                             }
-                            getText.setText(str);
                         } else {
                             Toast.makeText(MainActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
                         }
