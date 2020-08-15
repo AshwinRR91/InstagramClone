@@ -13,8 +13,22 @@
         android:layout_width="match_parent">
         <include android:id ="@+id/myToolbar"
             layout = "@layout/my_toolbar"/>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            />
+
     </com.google.android.material.appbar.AppBarLayout>
 
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBarLayout"
+        />
 
 
 </RelativeLayout>
