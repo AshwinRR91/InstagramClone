@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="rootLayoutTapped"
     tools:context=".MainActivity">
 
     <EditText
@@ -35,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/switch_to_login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -63,7 +64,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/switch_to_login_button" />
 
     <EditText
         android:id="@+id/password"
