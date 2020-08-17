@@ -35,22 +35,15 @@ public class LoginActivity extends AppCompatActivity {
                     public void done(ParseUser user, ParseException e) {
                         if(user!=null){
                             switchToSocialMediaActivity();
+                            finish();
                         } }}); }});
     }
 
     private void switchToSocialMediaActivity(){
         Intent intent = new Intent(LoginActivity.this,SocialMediaActivity.class);
         startActivity(intent);
+        finish();
     }
 
-    private void onLoginRootLayoutTapped(View view){
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        try {
-            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        }
-        catch (Exception e){
-            Log.i("Error LoginActivity", e.getMessage());
-        }
 
-        }
 }

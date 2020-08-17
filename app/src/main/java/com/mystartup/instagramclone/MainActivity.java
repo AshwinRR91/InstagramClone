@@ -36,8 +36,11 @@ private Button signUpButton;
         signUpButton = findViewById(R.id.signup_buton);
         loginButton.setOnClickListener(this);
         signUpButton.setOnClickListener(this);
+
+
         if(ParseUser.getCurrentUser()!= null){
             switchToSocialMediaActivity();
+            finish();
         }
 
 
@@ -67,6 +70,9 @@ private Button signUpButton;
                             }
                             else{
                                 Toast.makeText(MainActivity.this, "You have been signed up", Toast.LENGTH_LONG).show();
+                                switchToSocialMediaActivity();
+                                finish();
+
                             }
                         }
                     });
@@ -76,6 +82,7 @@ private Button signUpButton;
             case R.id.switch_to_login_button:
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
                 break;
 
 
